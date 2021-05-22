@@ -136,6 +136,10 @@ def json_to_pandas(filename, experiment_name, minfrm=200):
         finalTracks_df = pd.DataFrame(combined_tracks)
         finalTracks_df.columns = ['Frame', 'X', 'Y', 'ID']
         finalTracks_df['Exp_Name'] = str(experiment_name)
+        finalTracks_df.Frame = finalTracks_df.Frame.astype('int')
+        finalTracks_df.X = finalTracks_df.X.astype('float')
+        finalTracks_df.Y = finalTracks_df.Y.astype('float')
+        finalTracks_df.ID = finalTracks_df.ID.astype('int')
         return finalTracks_df
 
     if isinstance(filename, list) and isinstance(experiment_name, list):
@@ -153,6 +157,11 @@ def json_to_pandas(filename, experiment_name, minfrm=200):
         combined_tracks = np.vstack(track_array)
         finalTracks_df = pd.DataFrame(combined_tracks)
         finalTracks_df.columns = ['Frame', 'X', 'Y', 'ID', 'Exp_Name']
+        finalTracks_df.Frame = finalTracks_df.Frame.astype('int')
+        finalTracks_df.X = finalTracks_df.X.astype('float')
+        finalTracks_df.Y = finalTracks_df.Y.astype('float')
+        finalTracks_df.ID = finalTracks_df.ID.astype('int')
+        finalTracks_df.Exp_Name = finalTracks_df.Exp_Name.astype('str')
         return finalTracks_df
 
 def pandas_to_flika_JSON(tracks_df, output_dir, outfile_name):
