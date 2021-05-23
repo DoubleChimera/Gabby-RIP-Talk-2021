@@ -3,9 +3,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sb
-import pylustrator
-
 from pathlib import Path
+
+
 
 # Load Track Length Data
 trackLength_input_dir = '.'
